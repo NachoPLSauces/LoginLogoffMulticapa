@@ -18,4 +18,4 @@ $numConexiones = $_SESSION["usuarioDAW202LoginLogoffMulticapa"]->NumConexiones;
 //Incluimos la lógica de la vista
 $vista = $vistas['inicio'];
 require_once $vistas['layout'];
-?> 
+?>

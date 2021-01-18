@@ -1,5 +1,5 @@
 <?php
-$error = ""; //Variable para añmacenar los errores
+$error = ""; //Variable para almacenar los errores
 
 //Comprobamos si se ha enviado el formulario
 if(isset($_REQUEST['enviar'])){
