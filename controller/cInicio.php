@@ -12,7 +12,7 @@ if (isset($_REQUEST['salir'])) {
 } 
 
 //Variables que guardan información del usuario
-$descripcionUsuario = $_SESSION["usuarioDAW202LoginLogoffMulticapa"]->descUsuario;
+$descripcionUsuario = $_SESSION["usuarioDAW202LoginLogoffMulticapa"]->DescUsuario;
 $numConexiones = $_SESSION["usuarioDAW202LoginLogoffMulticapa"]->NumConexiones;
 
 //Incluimos la lógica de la vista
