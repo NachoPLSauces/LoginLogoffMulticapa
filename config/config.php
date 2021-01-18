@@ -17,8 +17,8 @@
             "layout" => "view/layout.php"];
     
     //Se almacena el usuario en una variable si se ha iniciado sesión
-    if(isset($_SESSION['usuarioDAW203LoginLogoffMulticapa'])){
-        $usuario=$_SESSION['usuarioDAW203LoginLogoffMulticapa'];
+    if(isset($_SESSION['usuarioDAW202LoginLogoffMulticapa'])){
+        $usuario=$_SESSION['usuarioDAW202LoginLogoffMulticapa'];
     }
 ?>
 

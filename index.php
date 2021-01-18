@@ -7,7 +7,7 @@
     require_once 'config/confDB.php';
 
     //Se dirige al usuario al inicio o al login, dependiendo de si se a autentificado correctamente o no
-    if(isset($_SESSION["usuarioDAW203LoginLogoffMulticapa"])){
+    if(isset($_SESSION["usuarioDAW202LoginLogoffMulticapa"])){
         require_once $controlador["inicio"];
     }else{
         require_once $controlador["login"];

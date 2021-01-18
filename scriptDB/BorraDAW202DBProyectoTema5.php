@@ -1,23 +1,23 @@
 <?php
         /**
-            *@author: Raúl Núñez
-            *@since: 28/11/2020
+            *@author: Nacho del Prado Losada
+            *@since: 11/12/2020
         */ 
             
-        require_once "../config/confDBPDO.php";
+        require_once "../config/confDB.php";
         
             try {
-                $miDB = new PDO(DNS,USER,PASSWORD);
+                $miDB = new PDO(DSN,USER,PASSWORD);
                 $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
                 $sql = <<<EOD
-                        DROP TABLE T02_Departamento;
-                        DROP TABLE T01_Usuario;
+                        DROP TABLE Departamento;
+                        DROP TABLE Usuario;
 EOD;
                 
                 $miDB->exec($sql);
                 
-                echo "<h3> <span style='color: green;'>"."Tablas borrada</span></h3>";
+                echo "<h3> <span style='color: green;'>"."Tablas borradas</span></h3>";
             }
             catch (PDOException $excepcion) {
                 $errorExcepcion = $excepcion->getCode();

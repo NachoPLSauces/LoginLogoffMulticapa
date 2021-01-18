@@ -1,5 +1,0 @@
--- BORRAR BASE DE DATOS DAW203DBDepartamentos
-DROP DATABASE DAW203DBProyectoTema5;
-
--- BORRAR USUARIO usuarioDAW203DBDepartamentos
-DROP USER usuarioDAW203DBProyectoTema5;
