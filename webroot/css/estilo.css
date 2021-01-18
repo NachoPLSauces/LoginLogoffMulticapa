@@ -13,8 +13,7 @@ header{
     display: table;
     width: 100%;
     background-color: cadetblue;
-    height: 10vh;
-    text-align: center;
+    height: 10vh;    text-align: center;
     vertical-align: middle;
 }
 header h1{
