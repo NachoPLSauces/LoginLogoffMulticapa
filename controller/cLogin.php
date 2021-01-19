@@ -30,8 +30,9 @@ if(isset($_REQUEST['enviar'])){
             if($ultimaConexion != null){
                 $_SESSION['fechaHoraUltimaConexionAnterior'] = $ultimaConexion;
             }  
-
-            //Se dirige al usuario a Programa.php
+            unset($miDB);
+            //Se dirige al usuario al inicio
+            $_SESSION['controlador'] = inicio;
             header('Location: index.php');
             exit;
         }

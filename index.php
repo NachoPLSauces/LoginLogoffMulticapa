@@ -8,8 +8,8 @@
 
     //Se dirige al usuario al inicio o al login, dependiendo de si se a autentificado correctamente o no
     if(isset($_SESSION["usuarioDAW202LoginLogoffMulticapa"])){
-        require_once $controlador["inicio"];
+        require_once $controladores[$_SESSION['controlador']];
     }else{
-        require_once $controlador["login"];
+        require_once $controladores["login"];
     }
 ?>

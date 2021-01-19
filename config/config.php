@@ -8,7 +8,7 @@
     require_once 'model/usuarioPDO.php';
     
     //Creamos un array que contiene las rutas de los archivos del controlador
-    $controlador=["login" => "controller/cLogin.php",
+    $controladores=["login" => "controller/cLogin.php",
                   "inicio" => "controller/cInicio.php"];
     
     //Creamos un array que contiene las rutas de los archivos de la vista
