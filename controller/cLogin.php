@@ -1,5 +1,12 @@
 <?php
-$error = ""; //Variable para añmacenar los errores
+//Comprobamos si el usuario ha elegido crear una cuenta
+if(isset($_REQUEST['crear'])){
+    $_SESSION['paginaEnCurso'] = registro;
+    header("Location: index.php");
+    exit;
+}
+
+$error = ""; //Variable para almacenar los errores
 
 //Comprobamos si se ha enviado el formulario
 if(isset($_REQUEST['enviar'])){
@@ -30,8 +37,9 @@ if(isset($_REQUEST['enviar'])){
             if($ultimaConexion != null){
                 $_SESSION['fechaHoraUltimaConexionAnterior'] = $ultimaConexion;
             }  
-
-            //Se dirige al usuario a Programa.php
+            
+            //Se dirige al usuario al inicio
+            $_SESSION['paginaEnCurso'] = inicio;
             header('Location: index.php');
             exit;
         }

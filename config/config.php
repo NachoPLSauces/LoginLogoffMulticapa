@@ -8,16 +8,13 @@
     require_once 'model/usuarioPDO.php';
     
     //Creamos un array que contiene las rutas de los archivos del controlador
-    $controlador=["login" => "controller/cLogin.php",
-                  "inicio" => "controller/cInicio.php"];
+    $controladores=["login" => "controller/cLogin.php",
+                    "inicio" => "controller/cInicio.php",
+                    "registro" => "controller/cRegistro.php"];
     
     //Creamos un array que contiene las rutas de los archivos de la vista
     $vistas=["login" => "view/vLogin.php",
             "inicio" => "view/vInicio.php",
+            "registro" => "view/vRegistro.php",
             "layout" => "view/layout.php"];
-    
-    //Se almacena el usuario en una variable si se ha iniciado sesión
-    if(isset($_SESSION['usuarioDAW202LoginLogoffMulticapa'])){
-        $usuario=$_SESSION['usuarioDAW202LoginLogoffMulticapa'];
-    }
 ?>

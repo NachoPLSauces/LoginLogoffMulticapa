@@ -9,7 +9,13 @@
             $resultado=DB::consultaSQL($sql, [$codUsuario, $encriptarPassword]);
             
             if($resultado->rowCount()>0){
-                $oUsuario=$resultado->fetchObject();
+                $usuarioConsulta = $resultado->fetchObject();
+                $oUsuario = new usuario($usuarioConsulta->CodUsuario, 
+                                        $usuarioConsulta->Password, 
+                                        $usuarioConsulta->DescUsuario, 
+                                        $usuarioConsulta->NumConexiones, 
+                                        $usuarioConsulta->FechaHoraUltimaConexion, 
+                                        $usuarioConsulta->Perfil);
             }
             return $oUsuario;
         }
@@ -21,8 +27,17 @@
             $sql="INSERT INTO Usuario (CodUsuario, Password, DescUsuario, NumConexiones, FechaHoraUltimaConexion) values (?,?,?,1,?)";
             $resultado=DB::consultaSQL($sql, [$codUsuario, $password, $descUsuario, time()]);
             
-            if($resultado->rowCount()>0){
-                $oUsuario=$resultado->fetchObject();
+            $sql = "SELECT * FROM Usuario WHERE CodUsuario=?";
+            $consulta = DB::consultaSQL($sql, [$codUsuario]);
+            
+            if($consulta->rowCount()>0){
+                $usuarioConsulta = $consulta->fetchObject();
+                $oUsuario = new usuario($usuarioConsulta->CodUsuario, 
+                                        $usuarioConsulta->Password, 
+                                        $usuarioConsulta->DescUsuario, 
+                                        $usuarioConsulta->NumConexiones, 
+                                        $usuarioConsulta->FechaHoraUltimaConexion, 
+                                        $usuarioConsulta->Perfil);
             }
             return $oUsuario;
         }
