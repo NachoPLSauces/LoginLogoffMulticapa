@@ -1,7 +1,7 @@
 <?php
 //Comprobamos si el usuario ha elegido crear una cuenta
 if(isset($_REQUEST['crear'])){
-    $_SESSION['paginaEnCurso'] = registro;
+    $_SESSION['paginaEnCurso'] = $controladores['registro'];
     header("Location: index.php");
     exit;
 }
@@ -39,7 +39,7 @@ if(isset($_REQUEST['enviar'])){
             }  
             
             //Se dirige al usuario al inicio
-            $_SESSION['paginaEnCurso'] = inicio;
+            $_SESSION['paginaEnCurso'] = $controladores['inicio'];
             header('Location: index.php');
             exit;
         }

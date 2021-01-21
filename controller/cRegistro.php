@@ -1,6 +1,6 @@
 <?php
 if(isset($_REQUEST['cancelar'])){
-    $_SESSION['paginaEnCurso'] = login;
+    $_SESSION['paginaEnCurso'] = $controladores['login'];
     header("Location: index.php");
     exit;
 }
@@ -72,7 +72,7 @@ if($entradaOK){
     $_SESSION['fechaHoraUltimaConexionAnterior'] = null;
     
     //Se dirige al usuario al inicio
-    $_SESSION['paginaEnCurso'] = inicio;
+    $_SESSION['paginaEnCurso'] = $controladores['inicio'];
     header('Location: index.php');
     exit;
 }
