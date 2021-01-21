@@ -27,5 +27,10 @@
                 <input class="enviar" type='submit' name='enviar' value='Iniciar sesión' />
             </div>
         </fieldset>
+        
+        <div class="crearCuenta">
+            <p>¿Eres nuevo?</p>
+            <input class="enviar" type='submit' name='crear' value='Crea tu cuenta' />
+        </div>
     </form>
 </main>

@@ -9,10 +9,12 @@
     
     //Creamos un array que contiene las rutas de los archivos del controlador
     $controladores=["login" => "controller/cLogin.php",
-                  "inicio" => "controller/cInicio.php"];
+                    "inicio" => "controller/cInicio.php",
+                    "registro" => "controller/cRegistro.php"];
     
     //Creamos un array que contiene las rutas de los archivos de la vista
     $vistas=["login" => "view/vLogin.php",
             "inicio" => "view/vInicio.php",
+            "registro" => "view/vRegistro.php",
             "layout" => "view/layout.php"];
 ?>

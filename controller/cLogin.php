@@ -1,4 +1,11 @@
 <?php
+//Comprobamos si el usuario ha elegido crear una cuenta
+if(isset($_REQUEST['crear'])){
+    $_SESSION['paginaEnCurso'] = registro;
+    header("Location: index.php");
+    exit;
+}
+
 $error = ""; //Variable para almacenar los errores
 
 //Comprobamos si se ha enviado el formulario
@@ -30,9 +37,9 @@ if(isset($_REQUEST['enviar'])){
             if($ultimaConexion != null){
                 $_SESSION['fechaHoraUltimaConexionAnterior'] = $ultimaConexion;
             }  
-            unset($miDB);
+            
             //Se dirige al usuario al inicio
-            $_SESSION['controlador'] = inicio;
+            $_SESSION['paginaEnCurso'] = inicio;
             header('Location: index.php');
             exit;
         }

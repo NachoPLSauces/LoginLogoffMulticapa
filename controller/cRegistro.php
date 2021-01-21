@@ -1,5 +1,6 @@
 <?php
 if(isset($_REQUEST['cancelar'])){
+    $_SESSION['paginaEnCurso'] = login;
     header("Location: index.php");
     exit;
 }
@@ -26,21 +27,20 @@ if(isset($_REQUEST['enviar'])){
     
     if($aErrores["usuario"] == null){
         //Realizamos una consulta
-        $sql = "SELECT CodUsuario FROM Usuario WHERE CodUsuario=:CodUsuario";
+        $sql = "SELECT CodUsuario FROM Usuario WHERE CodUsuario=?";
         $codUsuario = $_REQUEST['usuario'];
-        $consulta = DB::consultaSQL($sql, $codUsuario);
+        $consulta = DB::consultaSQL($sql, [$codUsuario]);
 
         $registro = $consulta->fetchObject();
         if($registro != null){
             $aErrores['usuario'] = "El nombre introducido está en uso";
         }
-        unset($miDB);
     }  
         
     //Comprobar que el campo apellido1 se ha rellenado con alfabéticos
     $aErrores["descripcion"] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['descripcion'], 200, 1, OBLIGATORIO);
     //Comprobar que el campo apellido2 se ha rellenado con alfabéticos
-    $aErrores["password"] = validacionFormularios::validarPassword($_REQUEST['password'], 1, OBLIGATORIO);
+    $aErrores["password"] = validacionFormularios::validarPassword($_REQUEST['password'], 16, 2, 3, OBLIGATORIO);
     
     //Comprobar si algún campo del array de errores ha sido rellenado
     foreach ($aErrores as $clave => $valor) {
@@ -62,35 +62,22 @@ if($entradaOK){
                     "descripcion" => $_REQUEST['descripcion'],
                     "password" => $_REQUEST['password']];
 
-    //Establecemos como zona horaria la de Madrid
-    date_default_timezone_set('Europe/Madrid'); 
-
-    //Realizo un insert 
-    $sql = "INSERT INTO Usuario (CodUsuario, DescUsuario, Password, NumConexiones, FechaHoraUltimaConexion) VALUES (?, ?, ?, 1, ?)";
-
     $codUsuario = $aRespuestas['usuario'];
     $descUsuario = $aRespuestas['descripcion'];
-    $password = hash("sha256",$aRespuestas['usuario'].$aRespuestas['password']);
-    $fechaHoraUltimaConexion = time();
-    $consulta = DB::consultaSQL($sql, [$codUsuario, $descUsuario, $password, $fechaHoraUltimaConexion]);
-
-    //Inicio de la sesión
-    session_start();
+    $password = hash("sha256",$codUsuario.$aRespuestas['password']);
+    $oUsuario = usuarioPDO::altaUsuario($codUsuario, $password, $descUsuario);
 
     //Se guarda el código del usuario para comprobar si el usuario ha pasado por el Login al visualizar las demás páginas 
-    $_SESSION['usuarioDAW202AppLoginLogoff'] = $aRespuestas['usuario'];    
-
+    $_SESSION['usuarioDAW202LoginLogoffMulticapa'] = $oUsuario;    
     $_SESSION['fechaHoraUltimaConexionAnterior'] = null;
-
-    unset($miDB);
     
     //Se dirige al usuario al inicio
-    $_SESSION['controlador'] = inicio;
+    $_SESSION['paginaEnCurso'] = inicio;
     header('Location: index.php');
     exit;
 }
 
-//Si el usuario no existe se carga el Login
-$vista = $vistas['login'];
+//Incluimos la lógica de la vista
+$vista = $vistas['registro'];
 require_once $vistas['layout'];
 ?>
