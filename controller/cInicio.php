@@ -8,7 +8,7 @@ if(!isset($_SESSION["usuarioDAW202LoginLogoffMulticapa"])){
 //Si el usuario pulsa "Salir" se le dirige al Login
 if (isset($_REQUEST['salir'])) { 
     session_destroy();
-    $_SESSION['paginaEnCurso'] = login;
+    $_SESSION['paginaEnCurso'] = $controladores['login'];
     header('Location: ./index.php'); 
     exit;
 } 
