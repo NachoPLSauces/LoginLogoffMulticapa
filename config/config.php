@@ -3,6 +3,8 @@
     require_once 'core/libreriaValidacion.php';
     
     //Se incluye la lógica del modelo
+    require_once 'model/iDB.php';
+    require_once 'model/iUsuarioDB.php';
     require_once 'model/dbPDO.php';
     require_once 'model/usuario.php';
     require_once 'model/usuarioPDO.php';

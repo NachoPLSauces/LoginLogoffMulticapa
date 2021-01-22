@@ -26,15 +26,7 @@ if(isset($_REQUEST['enviar'])){
     $aErrores["usuario"] = validacionFormularios::comprobarAlfabetico($_REQUEST['usuario'], 15, 3, OBLIGATORIO);
     
     if($aErrores["usuario"] == null){
-        //Realizamos una consulta
-        $sql = "SELECT CodUsuario FROM Usuario WHERE CodUsuario=?";
-        $codUsuario = $_REQUEST['usuario'];
-        $consulta = DB::consultaSQL($sql, [$codUsuario]);
-
-        $registro = $consulta->fetchObject();
-        if($registro != null){
-            $aErrores['usuario'] = "El nombre introducido está en uso";
-        }
+        $aErrores["usuario"] = usuarioPDO::validarCodNoExiste($_REQUEST['usuario']);
     }  
         
     //Comprobar que el campo apellido1 se ha rellenado con alfabéticos
