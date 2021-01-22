@@ -7,8 +7,16 @@
             </div>
 
             <div>
-                <p>Número de conexiones: <?php echo $numConexiones; ?></p>
+                <p>
+                    <?php if($numConexiones == 1){
+                        echo 'Es tu primera conexión';
+                    } 
+                    else{ 
+                        echo "Número de conexiones: ".$numConexiones;
+                    } ?>
+                </p>
                 <?php if(!empty($_SESSION['fechaHoraUltimaConexionAnterior'])){?>
+                
                 <p>Última conexión: <?php echo date("d-m-Y H:i:s", $_SESSION['fechaHoraUltimaConexionAnterior']); ?></p>
                 <?php } ?>
             </div>

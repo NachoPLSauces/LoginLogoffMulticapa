@@ -17,18 +17,8 @@ if(isset($_REQUEST['enviar'])){
         $oUsuario = usuarioPDO::validarUsuario($_REQUEST['usuario'], $_REQUEST['password']); //Se comprueba si existe el usuario
             
         if($oUsuario){
-            //Establecemos como zona horaria la de Madrid
-            date_default_timezone_set('Europe/Madrid'); 
             //Se guarda la última conexión
             $ultimaConexion = $oUsuario->FechaHoraUltimaConexion; 
-
-            //Se actualiza la última conexión registrada en la base de datos
-            $sql = "UPDATE Usuario SET NumConexiones=NumConexiones+1, FechaHoraUltimaConexion=? WHERE CodUsuario=?";
-            
-            $fechaHoraUltimaConexion = time();
-            $codUsuario = $_REQUEST['usuario'];
-            
-            $consulta = DB::consultaSQL($sql, [$fechaHoraUltimaConexion, $codUsuario]);
 
             //Se guarda el usuario para comprobar si el usuario ha pasado por el Login al visualizar las demás páginas 
             $_SESSION['usuarioDAW202LoginLogoffMulticapa'] = $oUsuario;    

@@ -1,5 +1,5 @@
 <?php
-    class DB{ //Creo una clase que se llama DB(DATA BASE).
+    class DBPDO implements DB{ //Creo una clase que se llama DB(DATA BASE).
         public static function consultaSQL($SQL, $parametros){ //Creo una función que se llama consultasSQL.
             try{
                 $miDB = new PDO(DSN, USER, PASSWORD); //Establezco la conexión a la base de datos instanciado un objeto PDO.
