@@ -62,5 +62,36 @@
             
             return $error;
         }
+        
+        //Función que permite borrar un usuario
+        public static function borrarUsuario($codUsuario){
+            //Almaceno la consulta a sql en una variable
+            $sql = "DELETE FROM Usuario WHERE CodUsuario=?";
+            
+            DBPDO::consultaSQL($sql, [$codUsuario]);
+        }
+        
+        //Función que permite modificar los campos de un usuario
+        public static function modificarUsuario($descUsuario, $codUsuario){
+            $oUsuario = null;
+            //Almaceno la consulta a sql en una variable
+            $sql = "UPDATE Usuario SET DescUsuario=? WHERE CodUsuario=?";
+            
+            DBPDO::consultaSQL($sql, [$descUsuario, $codUsuario]);
+            
+            $sql = "SELECT * FROM Usuario WHERE CodUsuario=?";
+            $consulta = DBPDO::consultaSQL($sql, [$codUsuario]);
+            
+            if($consulta->rowCount()>0){
+                $usuarioConsulta = $consulta->fetchObject();
+                $oUsuario = new usuario($usuarioConsulta->CodUsuario, 
+                                        $usuarioConsulta->Password, 
+                                        $usuarioConsulta->DescUsuario, 
+                                        $usuarioConsulta->NumConexiones, 
+                                        $usuarioConsulta->FechaHoraUltimaConexion, 
+                                        $usuarioConsulta->Perfil);
+            }
+            return $oUsuario;
+        }
     }
 ?>

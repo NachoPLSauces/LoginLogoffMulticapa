@@ -33,6 +33,9 @@ if(isset($_REQUEST['enviar'])){
             header('Location: index.php');
             exit;
         }
+        else{
+            $error = "Usuario o contraseña incorrectos";
+        }
     }
 }
 

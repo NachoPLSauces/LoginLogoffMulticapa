@@ -22,6 +22,8 @@
             </div>
 
             <div>
+                <input class="enviar" type="submit" name="editar" value="Editar cuenta"/>
+                <input class="enviar" type="submit" name="borrar" value="Borrar cuenta"/>
                 <input class="enviar" type="submit" name="salir" value="Salir"/>
             </div>
         </fieldset>
